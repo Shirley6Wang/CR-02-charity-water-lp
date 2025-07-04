@@ -1,47 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charity Water Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: white;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to right, rgba(255,165,0,0.85) 0%, rgba(255,165,0,0.6) 40%, transparent 60%), url('https://cdn2.dropmarkusercontent.com/52043/5795d0fd726169c5ee07917d00e80dcd906bc9e7897b02ff3925db2aa611a5f1/preview/5047_Ethiopia_2019_CG-.jpg?Expires=1751660588&Signature=Q9H07wJVfrIznB-dKWt1TUe4Bf6F~EyhAqGaJaS0pxfW4P7c67eszGaZwPvVYwks4Y9L5dFxzk8Wwpra3-irx3yaUa1J6qGtQWRf-64lhk7jTCTyGO7ud4wpmF1ciQInGtHrQgVTRogd70s14phJ7EWV83LyryuoeWnStF-tkVBI-A2u71i50G223nQLaf0CO-QF79E1z~4GqmzVuIM3vDd3xFwwX67ZF3FPR4~5qDF1pNxrfIdDlHVhxsie9b-ZmdSQL-EC8JDS0dErVqtWu0-BI3tb3TkvLN0N-GhC4GncWzvgYWy~QsVdJwMN4O5AuqECV7rw4U-QiLGsPDgfIw__&Key-Pair-Id=APKAITQYWVEN757ZA4KQ') no-repeat center center;
+      background-size: cover;
+      padding: 100px 40px;
+      min-height: 80vh;
+      position: relative;
+      overflow: hidden; /* Make sure the pseudo-element does not overflow */
+    }
+
+    /* Add a pseudo-element to flip only the background image horizontally, not the orange gradient */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      /* The orange gradient stays normal, only the image is flipped */
+      background: linear-gradient(to right, rgba(255,165,0,0.85) 0%, rgba(255,165,0,0.6) 40%, transparent 60%);
+    }
+
+    /* Add another pseudo-element for the flipped image only */
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      background: url('https://cdn2.dropmarkusercontent.com/52043/5795d0fd726169c5ee07917d00e80dcd906bc9e7897b02ff3925db2aa611a5f1/preview/5047_Ethiopia_2019_CG-.jpg?Expires=1751660588&Signature=Q9H07wJVfrIznB-dKWt1TUe4Bf6F~EyhAqGaJaS0pxfW4P7c67eszGaZwPvVYwks4Y9L5dFxzk8Wwpra3-irx3yaUa1J6qGtQWRf-64lhk7jTCTyGO7ud4wpmF1ciQInGtHrQgVTRogd70s14phJ7EWV83LyryuoeWnStF-tkVBI-A2u71i50G223nQLaf0CO-QF79E1z~4GqmzVuIM3vDd3xFwwX67ZF3FPR4~5qDF1pNxrfIdDlHVhxsie9b-ZmdSQL-EC8JDS0dErVqtWu0-BI3tb3TkvLN0N-GhC4GncWzvgYWy~QsVdJwMN4O5AuqECV7rw4U-QiLGsPDgfIw__&Key-Pair-Id=APKAITQYWVEN757ZA4KQ') no-repeat center center;
+      background-size: cover;
+      transform: scaleX(-1); /* Only the image is flipped */
+      pointer-events: none; /* Let clicks pass through */
+    }
+
+    /* Make sure the content stays above the pseudo-element */
+    .hero > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text {
+      max-width: 600px;
+      color: white;
+    }
+
+    .hero-text h1 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #ffa500;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      font-size: 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e69500;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .hero-text {
+        color: #fff;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <h2>Our Story</h2>
-        <p>
-         
-    </section>
+  <header>
+    <div class="logo">
+      <img src="https://via.placeholder.com/30x30" alt="Logo" />
+      charity: water
+    </div>
+    <nav>
+      <a href="#">ABOUT US</a>
+      <a href="#">OUR IMPACT</a>
+      <a href="#">GET INVOLVED</a>
+      <a href="#">WHY💧?</a>
+    </nav>
+  </header>
 
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
-        </div>
-    </section>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Join the Movement.<br>One Donation.<br>Endless Impact.</h1>
+      <p>You have the power to create lasting impact. At charity: water, every donation delivers clean water to people in need.</p>
+      <a href="#" class="btn">TAKE ACTION</a>
+    </div>
+  </section>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
-    </section>
+  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150"><path fill="#00BFFF" fill-opacity="0.3" d="M0,64L48,74.7C96,85,192,107,288,128C384,149,480,171,576,149.3C672,128,768,64,864,58.7C960,53,1056,107,1152,133.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+
 </body>
 </html>
