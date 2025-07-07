@@ -32,6 +32,12 @@ body {
   color: #222;
 }
 
+/* Impact page background image covers the whole section */
+body.impact-bg {
+  background: url('https://cdn2.dropmarkusercontent.com/52043/5795d0fd726169c5ee07917d00e80dcd906bc9e7897b02ff3925db2aa611a5f1/preview/5047_Ethiopia_2019_CG-.jpg?Expires=1751660588&Signature=Q9H07wJVfrIznB-dKWt1TUe4Bf6F~EyhAqGaJaS0pxfW4P7c67eszGaZwPvVYwks4Y9L5dFxzk8Wwpra3-irx3yaUa1J6qGtQWRf-64lhk7jTCTyGO7ud4wpmF1ciQInGtHrQgVTRogd70s14phJ7EWV83LyryuoeWnStF-tkVBI-A2u71i50G223nQLaf0CO-QF79E1z~4GqmzVuIM3vDd3xFwwX67ZF3FPR4~5qDF1pNxrfIdDlHVhxsie9b-ZmdSQL-EC8JDS0dErVqtWu0-BI3tb3TkvLN0N-GhC4GncWzvgYWy~QsVdJwMN4O5AuqECV7rw4U-QiLGsPDgfIw__&Key-Pair-Id=APKAITQYWVEN757ZA4KQ') no-repeat center center fixed;
+  background-size: cover;
+}
+
 /* Add a slight shadow and rounded corners to each section for depth */
 section {
   background: #fff; /* White background for sections */
@@ -44,11 +50,10 @@ section {
 /* Hero Section Styles */
 .hero {
   position: relative; /* Needed for overlay */
-  /* Set a background image that covers the whole section */
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80');
+  /* Add an orange gradient background on top of the image */
+  background: linear-gradient(to right, rgba(255,165,0,0.6) 0%, rgba(255,165,0,0.3) 40%, transparent 60%),
+    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') no-repeat center center;
   background-size: cover;      /* Make the image cover the whole area */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat;
   color: #fff;                 /* White text for contrast */
   text-align: center;          /* Center the text */
   padding: 60px 20px;          /* Add space above and below */
@@ -134,6 +139,33 @@ h2 {
 /* Add some spacing between sections */
 section {
   margin-bottom: 20px;
+}
+
+/* Navigation Styles */
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  /* Use Avenir Next Arabic font for navigation links. If not available, fall back to Arial or sans-serif. */
+  font-family: 'Avenir Next Arabic', Arial, sans-serif;
+  font-size: 1.05rem; /* Set a consistent font size for all nav links */
+  transition: color 0.3s, background 0.3s; /* Smooth color transition for beginners */
+  padding: 6px 14px; /* Add some padding to look like a button */
+  border-radius: 5px; /* Rounded corners for button look */
+}
+
+nav a:hover {
+  background-color: #F89513; /* Orange background on hover */
+  color: #fff; /* White text on hover for contrast */
+}
+
+/* Logo Styles */
+.logo img {
+  height: 28px; /* Make the logo the same size on every page */
+  width: auto;
+  object-fit: contain;
+  margin-right: 10px;
 }
 
 /* 

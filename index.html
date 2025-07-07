@@ -22,7 +22,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
+      padding: 18px 28px; /* Make the white banner a little bigger */
       background: white;
       position: relative;
       z-index: 2;
@@ -36,7 +36,9 @@
     }
 
     .logo img {
-      height: 30px;
+      height: 28px; /* Make the logo smaller */
+      width: auto;
+      object-fit: contain;
       margin-right: 10px;
     }
 
@@ -45,21 +47,34 @@
       text-decoration: none;
       color: #000;
       font-weight: 500;
+      /* Use Avenir Next Arabic font for navigation links. If not available, fall back to Arial or sans-serif. */
+      font-family: 'Avenir Next Arabic', Arial, sans-serif;
+      transition: color 0.3s, background 0.3s; /* Smooth color transition for beginners */
+      padding: 6px 14px; /* Add some padding to look like a button */
+      border-radius: 5px; /* Rounded corners for button look */
+    }
+
+    nav a:hover {
+      background-color: #F89513; /* Orange background on hover */
+      color: #fff; /* White text on hover for contrast */
     }
 
     .hero {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(to right, rgba(255,165,0,0.85) 0%, rgba(255,165,0,0.6) 40%, transparent 60%), url('https://cdn2.dropmarkusercontent.com/52043/5795d0fd726169c5ee07917d00e80dcd906bc9e7897b02ff3925db2aa611a5f1/preview/5047_Ethiopia_2019_CG-.jpg?Expires=1751660588&Signature=Q9H07wJVfrIznB-dKWt1TUe4Bf6F~EyhAqGaJaS0pxfW4P7c67eszGaZwPvVYwks4Y9L5dFxzk8Wwpra3-irx3yaUa1J6qGtQWRf-64lhk7jTCTyGO7ud4wpmF1ciQInGtHrQgVTRogd70s14phJ7EWV83LyryuoeWnStF-tkVBI-A2u71i50G223nQLaf0CO-QF79E1z~4GqmzVuIM3vDd3xFwwX67ZF3FPR4~5qDF1pNxrfIdDlHVhxsie9b-ZmdSQL-EC8JDS0dErVqtWu0-BI3tb3TkvLN0N-GhC4GncWzvgYWy~QsVdJwMN4O5AuqECV7rw4U-QiLGsPDgfIw__&Key-Pair-Id=APKAITQYWVEN757ZA4KQ') no-repeat center center;
-      background-size: cover;
+      /* Orange gradient background with image for beginners */
+      /* The orange now starts even further to the right, so the left side is fully transparent */
+      background: linear-gradient(to right, transparent 0%, transparent 40%, rgba(248,149,19,0.3) 50%, rgba(248,149,19,0.5) 70%, transparent 90%), 
+                  url('https://cdn2.dropmarkusercontent.com/52043/5795d0fd726169c5ee07917d00e80dcd906bc9e7897b02ff3925db2aa611a5f1/preview/5047_Ethiopia_2019_CG-.jpg?Expires=1751660588&Signature=Q9H07wJVfrIznB-dKWt1TUe4Bf6F~EyhAqGaJaS0pxfW4P7c67eszGaZwPvVYwks4Y9L5dFxzk8Wwpra3-irx3yaUa1J6qGtQWRf-64lhk7jTCTyGO7ud4wpmF1ciQInGtHrQgVTRogd70s14phJ7EWV83LyryuoeWnStF-tkVBI-A2u71i50G223nQLaf0CO-QF79E1z~4GqmzVuIM3vDd3xFwwX67ZF3FPR4~5qDF1pNxrfIdDlHVhxsie9b-ZmdSQL-EC8JDS0dErVqtWu0-BI3tb3TkvLN0N-GhC4GncWzvgYWy~QsVdJwMN4O5AuqECV7rw4U-QiLGsPDgfIw__&Key-Pair-Id=APKAITQYWVEN757ZA4KQ') left center / cover no-repeat;
+      width: 100vw; /* Make the hero section as wide as the viewport */
+      min-height: 100vh; /* Make the hero section as tall as the viewport */
       padding: 100px 40px;
-      min-height: 80vh;
       position: relative;
-      overflow: hidden; /* Make sure the pseudo-element does not overflow */
+      overflow: hidden;
     }
 
-    /* Add a pseudo-element for the flipped image only (put it below the orange gradient) */
+    /* Add a pseudo-element for the flipped image only (put it below the yellow gradient) */
     .hero::before {
       content: "";
       position: absolute;
@@ -85,7 +100,7 @@
       left: 0;
       z-index: 1;
       /* Orange gradient is flipped horizontally using scaleX(-1) */
-      background: linear-gradient(to right, transparent 0%, rgba(255,165,0,0.6) 40%, rgba(255,165,0,0.85) 100%);
+      background: linear-gradient(to right, transparent 0%, rgba(248,149,19,0.6) 40%, rgba(248,149,19,0.85) 100%);
       transform: scaleX(-1);
       pointer-events: none;
     }
@@ -104,6 +119,8 @@
     .hero-text h1 {
       font-size: 2.8rem;
       margin-bottom: 20px;
+      /* Use Proxima Nova font for the headline. If not available, fall back to Arial or sans-serif. */
+      font-family: 'Proxima Nova', Arial, sans-serif;
     }
 
     .hero-text p {
@@ -112,7 +129,7 @@
     }
 
     .btn {
-      background-color: #ffa500;
+      background-color: #F89513;
       color: white;
       padding: 12px 24px;
       border: none;
@@ -123,14 +140,7 @@
     }
 
     .btn:hover {
-      background-color: #e69500;
-    }
-
-    .wave {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
+      background-color: #d87d0f;
     }
 
     @media (max-width: 768px) {
@@ -150,29 +160,28 @@
 
   <header>
     <div class="logo">
-      <img src="https://via.placeholder.com/30x30" alt="Logo" />
-      charity: water
+      <!-- Charity: water logo image now uses the local cw_logo-2.png file -->
+      <img src="img/cw_logo-2.png" alt="Charity: water logo" />
     </div>
     <nav>
-      <a href="#">ABOUT US</a>
-      <a href="#">OUR IMPACT</a>
-      <a href="#">GET INVOLVED</a>
-      <a href="#">WHY💧?</a>
+      <!-- The ABOUT US link now goes to about.html, which is another page in the same website -->
+      <a href="about.html" style="font-family: 'Proxima Nova', Arial, sans-serif;">ABOUT US</a>
+      <!-- The OUR IMPACT link now goes to impact.html, which is another page in the same website -->
+      <a href="impact.html">OUR IMPACT</a>
+      <a href="get-involved.html">GET INVOLVED</a>
+      <a href="why.html">WHY💧?</a>
     </nav>
   </header>
 
   <section class="hero">
     <div class="hero-text">
       <h1>Join the Movement.<br>One Donation.<br>Endless Impact.</h1>
-      <p>You have the power to create lasting impact. At charity: water, every donation delivers clean water to people in need.</p>
-      <a href="#" class="btn">TAKE ACTION</a>
+      <p style="font-family: 'Avenir Next Arabic', Arial, sans-serif;">
+        <strong>771</strong> million people lack access to clean water—1 in 10 globally. You have the power to change that. At charity: water, every donation delivers clean water to people in need.
+      </p>
+      <a href="get-involved.html" class="btn">TAKE ACTION</a>
     </div>
   </section>
-  <!-- New SVG wave added below the hero section -->
-  <svg class="wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 150" fill="none">
-    <path d="M0,120 C200,100 400,160 600,120 C800,80 1000,160 1200,120 C1300,100 1400,140 1440,130" 
-          stroke="#00BFFF" stroke-width="3" stroke-dasharray="10,10" fill="transparent"/>
-  </svg>
 
 </body>
 </html>
